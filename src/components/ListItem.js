@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Alert,
+  TouchableOpacity
+} from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const style = StyleSheet.create({
     listItem:{
@@ -22,16 +29,32 @@ const style = StyleSheet.create({
     },
 });
 
-export default ({ item }) => {
+export default ({ item,deleteItem }) => {
 
+  handleDeleteItem=(item)=>{
+    
+    Alert.alert("Delete Confirmation", `Do you Want To Delete ${item.text}`, [{
+        text: 'Yes',
+        onPress: () => deleteItem(item.id),
+      },
+      {
+        text: 'No',
+      },
+    ])
+  }
+  
   return (
-    <TouchableOpacity style={style.listItem}>
+    <View style={style.listItem}>
         <View style={style.listItemView}>
           <Text style={style.listItemText}>
             { item.text }: {" "}
           <Text style={style.smallText}>{ item.price } Rwf</Text>
           </Text>
+          <TouchableOpacity onPress={()=>handleDeleteItem(item)} >
+            <MaterialCommunityIcons name="delete" size={24} color="grey" />
+          </TouchableOpacity>
+          
         </View>
-    </TouchableOpacity>
+    </View>
   );
 };

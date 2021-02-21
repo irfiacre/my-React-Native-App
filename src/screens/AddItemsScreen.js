@@ -2,10 +2,6 @@ import React from 'react';
 import { 
       View, 
       StyleSheet,
-      StatusBar,
-      Platform,
-      Button,
-      TextInput,
 } from 'react-native';
 import Form from '../components/Form';
 
