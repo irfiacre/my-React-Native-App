@@ -1,33 +1,44 @@
-import React, { useState } from 'react';
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
-import HomeScreen from './src/screens/HomeScreen';
-import AddItemScreen from './src/screens/AddItemsScreen';
-import randomId from './src/helpers/RandomId'
+import * as React from 'react';
+import {
+  DefaultTheme,
+  Provider as PaperProvider
+} from 'react-native-paper';
+import { Provider as StoreProvider } from 'react-redux';
+import BottomNavigation from './src/routes/BottomNavigation';
+import configureStore from './src/redux/configureStore';
+import {
+    StyleSheet,
+    StatusBar,
+    Platform,
+} from 'react-native';
 
-export default function App() {
-  const Stack = createStackNavigator();
-    const [items, setItems] = useState([]);
-    
-    const addItems =(data) => setItems(
-      items.concat({ 
-                id:randomId(),
-                text: data.name,
-                price: data.price,
-      }));
-    
-    const removeItem = (id) => setItems( items.filter((elt)=> elt.id !== id) );
-    
-    const homeScreen = (props) => <HomeScreen items = { items } deleteItem={removeItem} { ...props } />
-    const addItemScreen = (props) => <AddItemScreen addItems = { addItems } { ...props } />
+const store = configureStore();
 
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#fff',
+    accent: '#1976D2',
+  },
+};
+
+const style = StyleSheet.create({
+    container : { 
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    },
+});
+
+
+ const App =()=> {
   return (
-       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home' >
-          <Stack.Screen name='Home' component={homeScreen} />
-          <Stack.Screen name='AddItem' component={addItemScreen} />
-
-        </Stack.Navigator>
-       </NavigationContainer>
+    <StoreProvider store={store}>
+      <PaperProvider theme={theme}>
+        <BottomNavigation style={style.container} />
+      </PaperProvider>
+    </StoreProvider>
   );
 }
+
+export default App;
