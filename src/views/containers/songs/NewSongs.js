@@ -48,6 +48,8 @@ export default (props) => {
   const onImgPress = (song) => console.log(">>>>>", song);
   const onIconPress = (song) => console.log(">>>>>", song);
   
+  // console.log(">>>>>>>>>", newSongsStore.data.results);
+  
   return (
       <View>
          <ImageListComponent 

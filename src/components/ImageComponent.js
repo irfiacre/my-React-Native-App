@@ -8,6 +8,7 @@ import {
     Text
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import {  } from '../../assets/music-icon.png';
 
 export default ({
   content,
@@ -21,7 +22,12 @@ export default ({
       <TouchableOpacity onPress={() => onImgPress(content)}>
           <Image
             style={ styles.image }
-            source={{ uri:content.imageUrl ||content.image }}
+            source = {
+              {
+                uri: !content.imageUrl.includes('No image URL') ? content.imageUrl
+                     : 'https://music.inyarwanda.com/assets/img/playButton.png'
+              }
+            }
           />
       </TouchableOpacity>
       <View style={ styles.footer } />
