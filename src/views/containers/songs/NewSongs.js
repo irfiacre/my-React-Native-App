@@ -45,7 +45,9 @@ export default (props) => {
     dispatch( fetchNewSongs({  page: 1, limit:12 }) );
   },[]);
   
-  const onImgPress = (song) => console.log(">>>>>", song);
+  const onImgPress = (song) => navigation.push("Song", {
+      id: song.id
+    });
   const onIconPress = (song) => console.log(">>>>>", song);
   
   // console.log(">>>>>>>>>", newSongsStore.data.results);

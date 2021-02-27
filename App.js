@@ -4,7 +4,8 @@ import {
   Provider as PaperProvider
 } from 'react-native-paper';
 import { Provider as StoreProvider } from 'react-redux';
-import BottomNavigation from './src/routes/BottomNavigation';
+// import BottomNavigation from './src/routes/BottomNavigation';
+import Navigation from './src/routes/index';
 import configureStore from './src/redux/configureStore';
 import {
     StyleSheet,
@@ -35,7 +36,7 @@ const style = StyleSheet.create({
   return (
     <StoreProvider store={store}>
       <PaperProvider theme={theme}>
-        <BottomNavigation style={style.container} />
+        <Navigation style={style.container} />
       </PaperProvider>
     </StoreProvider>
   );

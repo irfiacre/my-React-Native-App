@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import SongsScreen from '../screens/SongsScreen';
-import AddItemScreen from '../screens/AddItemsScreen';
+import AddItemScreen from '../screens/SongDetailsScreen';
 import {
   StyleSheet,
   StatusBar,

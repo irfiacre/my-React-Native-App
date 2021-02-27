@@ -17,12 +17,8 @@ export default (props) => {
     dispatch( fetchTopSongs({ page: 1, limit:12 }) );
   },[])
   
-  const [ songsState, setSongsState ] = useState({
-   songs: []
-  });
-  
-  const onImgPress = (song) => console.log(">>>>>", song);
-  const onIconPress = (song) => console.log(">>>>>", song);
+  const onImgPress = (song) => navigation.push("Song", { id:song.id });
+  // const onIconPress = (song) => console.log(">>>>>", song);
   
   return (
       <View>
@@ -31,7 +27,7 @@ export default (props) => {
               topSongsStore.data.results?topSongsStore.data.results:[]
             }
             onImgPress={ onImgPress }
-            onIconPress={ onIconPress }
+            // onIconPress={ onIconPress }
             
          />
       </View>

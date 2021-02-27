@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   FlatList,
+  Alert,
 } from 'react-native';
 import ImageComponent from '../../../components/ImageComponent';
 
@@ -15,8 +16,15 @@ export default class ListComponent extends Component {
     };
   }
   
-  handleOnImgPress = () => this.props.onImgPress;
-  handleOnIconPress = () => this.props.onIconPress;
+  handleOnImgPress = (data) => this.props.onImgPress(data);
+  handleOnIconPress = (data) => Alert.alert("Waring", " I am sorry We Can't play songs currently", [{
+      text: '👍🏿 No Worries',
+    },
+    {
+      text: '👎🏿 Boo',
+    },
+  ])
+  // this.props.onIconPress(data);
   
   render() {
   const {
