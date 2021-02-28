@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { 
       View, 
       StyleSheet,
       Text,
       ScrollView,
+      LogBox
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import SongContainer from '../views/containers/songs/songContainer';
@@ -13,11 +14,15 @@ import Loading from '../components/Loading';
 
 export default (props) => {
    const songInfoStore = useSelector(store => store.songInfo);
-  //  console.log(".........", );
+   
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, []);
+  
   return (
       <ScrollView style={styles.container} >
        {
-       songInfoStore.loading ?<Loading /> :
+      //  songInfoStore.loading ?<Loading /> :
        <View>
           <SongContainer {...props} />       
           <View style={styles.container} >
@@ -38,5 +43,6 @@ const styles = StyleSheet.create({
   container: {},
   title:{
     fontSize: 24,
+    padding: 10,
   },
 });

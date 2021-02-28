@@ -18,7 +18,7 @@ export default (props) => {
     dispatch(fetchSong(route.params.id));
   },[])
   
-console.log("========", songInfoStore);
+// console.log("========", songInfoStore);
 
   const onImgPress = (song) => navigation.push("Song", {
     id: song.id

@@ -6,6 +6,7 @@ import {
   Alert,
 } from 'react-native';
 import ImageComponent from '../../../components/ImageComponent';
+import randomId from '../../../helpers/RandomId'
 
 export default class ListComponent extends Component {
 
@@ -32,7 +33,7 @@ export default class ListComponent extends Component {
     wrap,
     numberOfColumns
   } = this.props;
-  
+  // console.log(">>>>>", randomId(1));
     return (
       <View style={styles.container}>
          <FlatList 
@@ -47,7 +48,7 @@ export default class ListComponent extends Component {
                 isSongs 
            />
           )} 
-          keyExtractor={item => `${item.id}`}
+          keyExtractor={item =>  randomId(item.id)}
           horizontal={ !wrap }
           numColumns={ wrap? numberOfColumns : null}
           ItemSeparatorComponent={() => {

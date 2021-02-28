@@ -7,13 +7,12 @@ import {
     View,
     Text
 } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 export default ({
   content,
   onImgPress,
   onIconPress,
-  isSongs
 }) => {
 
   return (
@@ -75,25 +74,16 @@ export default ({
               ) : null} */}
               
         </View>
-        <TouchableHighlight 
-            style={ styles.icon }
-            onPress={()=> onIconPress(content)}
-        >
-          { 
-              isSongs? 
-                <View style={ styles.imageIcon }>
-                     <Image
-                          source = {
-                              require('../../../../assets/playButton.png')
-                          }
-                          style={{ width: 40, height: 40 }}
-                        />
-                </View>
-              :<MaterialCommunityIcons name="playlist-music" size={30} color="#fff" />
-          }
-        </TouchableHighlight>
-      </View>
-      
+          <View style={ styles.imageIcon }>
+                       <Image
+                            source = {
+                                require('../../../../assets/playButton.png')
+                            }
+                            style={{ width: 60, height: 60 }}
+                          />
+                  </View>
+        </View>
+        <View style={ styles.breaker }/>
     </View>
   );
 };
@@ -103,30 +93,25 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     flexBasis: '47%',
     marginHorizontal: 5,
-    // width: 250,
-    padding: 20,
+    padding: 10,
   },
+  
   image: {
     height: 200,
     width:"100%",
     resizeMode: 'cover',
   },
-  footer:{
-    backgroundColor:"#000",
-    opacity:0.7,
-    marginTop:-65,
-    height: 65,
+  
+  imageIcon: {
+    opacity:0.8,
+    marginTop:-135,
+    marginLeft: "45%",
   },
-  footerContent:{
-      flexDirection: "row",
-      justifyContent: "space-between",
-      marginTop: -65,
-      padding: 10,
+  breaker:{
+      marginTop: 50,
   },
   text: {
-      fontSize: 18,
-      // width: "90%",
-      color:"#fff"
+      fontSize: 28,
   },
   icon:{
     borderRadius:50,

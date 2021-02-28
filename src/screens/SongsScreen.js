@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { 
       View, 
       StyleSheet,
       Text, 
-      ScrollView
+      ScrollView,
+      LogBox
 } from 'react-native';
 import AllSongsContainer from '../views/containers/songs/AllSongs';
 import TopSongsContainer from '../views/containers/songs/TopSongs';
 import NewSongsContainer from '../views/containers/songs/NewSongs';
 
 export default (props) => {
-  
+    useEffect(() => {
+      LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+    }, []);
   return (
       <ScrollView style={styles.container} >
       
