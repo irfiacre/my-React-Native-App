@@ -6,6 +6,11 @@ bin-release/
 
 # Other files and folders
 .settings/
+.vscode
+playground
+package-lock.json
+.expo
+.expo-shared
 
 # Executables
 *.swf
@@ -30,5 +35,3 @@ web-build/
 
 # macOS
 .DS_Store
-.vscode
-playground
