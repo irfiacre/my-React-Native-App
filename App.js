@@ -1,21 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import {
+  DefaultTheme,
+  Provider as PaperProvider
+} from 'react-native-paper';
+import { Provider as StoreProvider } from 'react-redux';
+// import BottomNavigation from './src/routes/BottomNavigation';
+import Navigation from './src/routes/index';
+import configureStore from './src/redux/configureStore';
+import {
+    StyleSheet,
+    StatusBar,
+    Platform,
+} from 'react-native';
 
-export default function App() {
+const store = configureStore();
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#fff',
+    accent: '#1976D2',
+  },
+};
+
+const style = StyleSheet.create({
+    container : { 
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    },
+});
+
+
+ const App =()=> {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <StoreProvider store={store}>
+      <PaperProvider theme={theme}>
+        <Navigation style={style.container} />
+      </PaperProvider>
+    </StoreProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
